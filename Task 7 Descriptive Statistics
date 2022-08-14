@@ -1,0 +1,72 @@
+import numpy as np
+import pandas as pd
+data=pd.read_csv("/data (2).csv")
+
+"""MEAN"""'
+
+"""Mean or Average is a central tendency of the data i.e. a number around which a whole data is spread out. 
+In a way, it is a single number that can estimate the value of the whole data set."""
+
+
+data.head()
+
+data.mean(axis = 0)
+
+"""""Median""""
+
+"""Median is the value that divides the data into 2 equal parts
+i.e. number of terms on the right side of it is the same as a number of terms on the left side of it when data is arranged 
+in either ascending or descending order."""
+
+
+data.median(axis = 0)
+
+"""Mode"""
+
+"""Mode is the term appearing maximum time in data set i.e. term that has the highest frequency."""
+
+
+data.mode(axis = 0)
+
+"""""Variance"""""
+
+"""variance measures how far each number in the set is from the mean (average), 
+and thus from every other number in the set. Variance is often depicted by this symbol: σ2."""
+
+
+data.var(axis = 0)
+
+"""Standard Deviation"""
+
+"""Standard deviation is a statistic that measures the dispersion of a dataset relative to its mean 
+and is calculated as the square root of the variance.
+The standard deviation is calculated as the square root of variance σ2
+by determining each data point's deviation relative to the mean."""
+
+
+data.std(axis = 0)
+
+"""Correlation""""
+
+"""The correlation coefficient is a simple descriptive statistic that measures the strength of the linear relationship
+between two interval- or ratio-scale variables 
+(as opposed to categorical, or nominal-scale variables), as might be visualized in a scatter plot. """
+
+
+data.corr(method ='kendall')
+
+"""Normal Distribution"""
+
+"""The normal distribution is a continuous probability distribution that is symmetrical on both sides of the mean,
+so the right side of the center is a mirror image of the left side. 
+The area under the normal distribution curve represents probability and the total area under the curve sums to one."""
+
+
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+import statistics  
+mean = statistics.mean(data["Mthly_HH_Income"])
+sd = statistics.stdev(data["Mthly_HH_Income"])
+  
+plt.plot(data["Mthly_HH_Income"], norm.pdf(data["Mthly_HH_Income"], mean, sd))
+plt.show()
